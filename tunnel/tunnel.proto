@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tunnel;
 
-option go_package = "github.com/Purple-House/agni-schema/protobuf;tunnel";
+option go_package = "github.com/odio4u/agni-schema/protobuf;tunnel";
 
 service AgniTunnel {
   rpc Connect(stream Envelope) returns (stream Envelope);

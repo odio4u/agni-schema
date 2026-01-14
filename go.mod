@@ -1,4 +1,4 @@
-module github.com/Purple-House/agni-schema
+module github.com/odio4u/agni-schema
 
 go 1.25.5
 
