@@ -1,6 +1,6 @@
 BUF := buf
 
-PROTO_DIRS := wal tunnel
+PROTO_DIRS := wal tunnel maps
 
 .PHONY: gen gen-wal gen-tunnel gen-maps
 
@@ -12,5 +12,5 @@ gen-wal:
 gen-tunnel:
 	$(BUF) generate --path tunnel
 
-# gen-maps:
-# 	$(BUF) generate --path maps
+gen-maps:
+	$(BUF) generate --path maps
