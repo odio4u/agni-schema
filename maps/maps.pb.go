@@ -778,6 +778,286 @@ func (x *ProxyConnectionRequest) GetVerifiableCredHash() string {
 	return ""
 }
 
+type SeederRegistrationRequest struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Name               string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Dns                string                 `protobuf:"bytes,2,opt,name=dns,proto3" json:"dns,omitempty"`
+	SeedIp             string                 `protobuf:"bytes,3,opt,name=seed_ip,json=seedIp,proto3" json:"seed_ip,omitempty"`
+	SeedPort           string                 `protobuf:"bytes,4,opt,name=seed_port,json=seedPort,proto3" json:"seed_port,omitempty"`
+	Region             string                 `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
+	VerifiableCredHash string                 `protobuf:"bytes,6,opt,name=verifiable_cred_hash,json=verifiableCredHash,proto3" json:"verifiable_cred_hash,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *SeederRegistrationRequest) Reset() {
+	*x = SeederRegistrationRequest{}
+	mi := &file_maps_maps_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeederRegistrationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeederRegistrationRequest) ProtoMessage() {}
+
+func (x *SeederRegistrationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_maps_maps_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeederRegistrationRequest.ProtoReflect.Descriptor instead.
+func (*SeederRegistrationRequest) Descriptor() ([]byte, []int) {
+	return file_maps_maps_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SeederRegistrationRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SeederRegistrationRequest) GetDns() string {
+	if x != nil {
+		return x.Dns
+	}
+	return ""
+}
+
+func (x *SeederRegistrationRequest) GetSeedIp() string {
+	if x != nil {
+		return x.SeedIp
+	}
+	return ""
+}
+
+func (x *SeederRegistrationRequest) GetSeedPort() string {
+	if x != nil {
+		return x.SeedPort
+	}
+	return ""
+}
+
+func (x *SeederRegistrationRequest) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+func (x *SeederRegistrationRequest) GetVerifiableCredHash() string {
+	if x != nil {
+		return x.VerifiableCredHash
+	}
+	return ""
+}
+
+type SeederResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SeederId      string                 `protobuf:"bytes,1,opt,name=seeder_id,json=seederId,proto3" json:"seeder_id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Dns           string                 `protobuf:"bytes,3,opt,name=dns,proto3" json:"dns,omitempty"`
+	SeedIp        string                 `protobuf:"bytes,4,opt,name=seed_ip,json=seedIp,proto3" json:"seed_ip,omitempty"`
+	SeedPort      string                 `protobuf:"bytes,5,opt,name=seed_port,json=seedPort,proto3" json:"seed_port,omitempty"`
+	Region        string                 `protobuf:"bytes,6,opt,name=region,proto3" json:"region,omitempty"`
+	Identity      string                 `protobuf:"bytes,7,opt,name=identity,proto3" json:"identity,omitempty"`
+	Error         *Error                 `protobuf:"bytes,8,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeederResponse) Reset() {
+	*x = SeederResponse{}
+	mi := &file_maps_maps_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeederResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeederResponse) ProtoMessage() {}
+
+func (x *SeederResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_maps_maps_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeederResponse.ProtoReflect.Descriptor instead.
+func (*SeederResponse) Descriptor() ([]byte, []int) {
+	return file_maps_maps_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SeederResponse) GetSeederId() string {
+	if x != nil {
+		return x.SeederId
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetDns() string {
+	if x != nil {
+		return x.Dns
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetSeedIp() string {
+	if x != nil {
+		return x.SeedIp
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetSeedPort() string {
+	if x != nil {
+		return x.SeedPort
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetIdentity() string {
+	if x != nil {
+		return x.Identity
+	}
+	return ""
+}
+
+func (x *SeederResponse) GetError() *Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
+type SeederQueryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Region        string                 `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeederQueryRequest) Reset() {
+	*x = SeederQueryRequest{}
+	mi := &file_maps_maps_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeederQueryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeederQueryRequest) ProtoMessage() {}
+
+func (x *SeederQueryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_maps_maps_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeederQueryRequest.ProtoReflect.Descriptor instead.
+func (*SeederQueryRequest) Descriptor() ([]byte, []int) {
+	return file_maps_maps_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *SeederQueryRequest) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+type MultipleSeeders struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seeders       []*SeederResponse      `protobuf:"bytes,1,rep,name=seeders,proto3" json:"seeders,omitempty"`
+	Error         *Error                 `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MultipleSeeders) Reset() {
+	*x = MultipleSeeders{}
+	mi := &file_maps_maps_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MultipleSeeders) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultipleSeeders) ProtoMessage() {}
+
+func (x *MultipleSeeders) ProtoReflect() protoreflect.Message {
+	mi := &file_maps_maps_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultipleSeeders.ProtoReflect.Descriptor instead.
+func (*MultipleSeeders) Descriptor() ([]byte, []int) {
+	return file_maps_maps_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *MultipleSeeders) GetSeeders() []*SeederResponse {
+	if x != nil {
+		return x.Seeders
+	}
+	return nil
+}
+
+func (x *MultipleSeeders) GetError() *Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
 var File_maps_maps_proto protoreflect.FileDescriptor
 
 const file_maps_maps_proto_rawDesc = "" +
@@ -841,7 +1121,28 @@ const file_maps_maps_proto_rawDesc = "" +
 	"\bproxy_id\x18\x03 \x01(\tR\aproxyId\"b\n" +
 	"\x16ProxyConnectionRequest\x12\x16\n" +
 	"\x06region\x18\x01 \x01(\tR\x06region\x120\n" +
-	"\x14verifiable_cred_hash\x18\x03 \x01(\tR\x12verifiableCredHash*\xd3\x01\n" +
+	"\x14verifiable_cred_hash\x18\x03 \x01(\tR\x12verifiableCredHash\"\xc1\x01\n" +
+	"\x19SeederRegistrationRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03dns\x18\x02 \x01(\tR\x03dns\x12\x17\n" +
+	"\aseed_ip\x18\x03 \x01(\tR\x06seedIp\x12\x1b\n" +
+	"\tseed_port\x18\x04 \x01(\tR\bseedPort\x12\x16\n" +
+	"\x06region\x18\x05 \x01(\tR\x06region\x120\n" +
+	"\x14verifiable_cred_hash\x18\x06 \x01(\tR\x12verifiableCredHash\"\xe0\x01\n" +
+	"\x0eSeederResponse\x12\x1b\n" +
+	"\tseeder_id\x18\x01 \x01(\tR\bseederId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
+	"\x03dns\x18\x03 \x01(\tR\x03dns\x12\x17\n" +
+	"\aseed_ip\x18\x04 \x01(\tR\x06seedIp\x12\x1b\n" +
+	"\tseed_port\x18\x05 \x01(\tR\bseedPort\x12\x16\n" +
+	"\x06region\x18\x06 \x01(\tR\x06region\x12\x1a\n" +
+	"\bidentity\x18\a \x01(\tR\bidentity\x12!\n" +
+	"\x05error\x18\b \x01(\v2\v.maps.ErrorR\x05error\",\n" +
+	"\x12SeederQueryRequest\x12\x16\n" +
+	"\x06region\x18\x01 \x01(\tR\x06region\"d\n" +
+	"\x0fMultipleSeeders\x12.\n" +
+	"\aseeders\x18\x01 \x03(\v2\x14.maps.SeederResponseR\aseeders\x12!\n" +
+	"\x05error\x18\x02 \x01(\v2\v.maps.ErrorR\x05error*\xd3\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x1f\n" +
 	"\x1bERROR_CODE_INVALID_ARGUMENT\x10\x01\x12\x18\n" +
@@ -849,12 +1150,15 @@ const file_maps_maps_proto_rawDesc = "" +
 	"\x19ERROR_CODE_ALREADY_EXISTS\x10\x03\x12\x1a\n" +
 	"\x16ERROR_CODE_UNAVAILABLE\x10\x04\x12\x17\n" +
 	"\x13ERROR_CODE_INTERNAL\x10\x05\x12\x1b\n" +
-	"\x17ERROR_CODE_UNAUTHORIZED\x10\x062\x9a\x02\n" +
+	"\x17ERROR_CODE_UNAUTHORIZED\x10\x062\xa2\x03\n" +
 	"\x04Maps\x12A\n" +
 	"\x0fRegisterGateway\x12\x17.maps.GatewayPutRequest\x1a\x15.maps.GatewayResponse\x12B\n" +
 	"\rRegisterAgent\x12\x1c.maps.AgentConnectionRequest\x1a\x13.maps.AgentResponse\x12H\n" +
 	"\x16ResolveGatewayForAgent\x12\x16.maps.GatewayHandshake\x1a\x16.maps.MultipleGateways\x12A\n" +
-	"\x16ResolveGatewayForProxy\x12\x12.maps.ProxyMapping\x1a\x13.maps.AgentResponseB)Z'github.com/odio4u/agni-schema/maps;mapsb\x06proto3"
+	"\x16ResolveGatewayForProxy\x12\x12.maps.ProxyMapping\x1a\x13.maps.AgentResponse\x12G\n" +
+	"\x0eRegisterSeeder\x12\x1f.maps.SeederRegistrationRequest\x1a\x14.maps.SeederResponse\x12=\n" +
+	"\n" +
+	"GetSeeders\x12\x18.maps.SeederQueryRequest\x1a\x15.maps.MultipleSeedersB)Z'github.com/odio4u/agni-schema/maps;mapsb\x06proto3"
 
 var (
 	file_maps_maps_proto_rawDescOnce sync.Once
@@ -869,19 +1173,23 @@ func file_maps_maps_proto_rawDescGZIP() []byte {
 }
 
 var file_maps_maps_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_maps_maps_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_maps_maps_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_maps_maps_proto_goTypes = []any{
-	(ErrorCode)(0),                 // 0: maps.ErrorCode
-	(*Error)(nil),                  // 1: maps.Error
-	(*GatewayPutRequest)(nil),      // 2: maps.GatewayPutRequest
-	(*Capacity)(nil),               // 3: maps.Capacity
-	(*GatewayResponse)(nil),        // 4: maps.GatewayResponse
-	(*AgentConnectionRequest)(nil), // 5: maps.AgentConnectionRequest
-	(*AgentResponse)(nil),          // 6: maps.AgentResponse
-	(*GatewayHandshake)(nil),       // 7: maps.GatewayHandshake
-	(*MultipleGateways)(nil),       // 8: maps.MultipleGateways
-	(*ProxyMapping)(nil),           // 9: maps.ProxyMapping
-	(*ProxyConnectionRequest)(nil), // 10: maps.ProxyConnectionRequest
+	(ErrorCode)(0),                    // 0: maps.ErrorCode
+	(*Error)(nil),                     // 1: maps.Error
+	(*GatewayPutRequest)(nil),         // 2: maps.GatewayPutRequest
+	(*Capacity)(nil),                  // 3: maps.Capacity
+	(*GatewayResponse)(nil),           // 4: maps.GatewayResponse
+	(*AgentConnectionRequest)(nil),    // 5: maps.AgentConnectionRequest
+	(*AgentResponse)(nil),             // 6: maps.AgentResponse
+	(*GatewayHandshake)(nil),          // 7: maps.GatewayHandshake
+	(*MultipleGateways)(nil),          // 8: maps.MultipleGateways
+	(*ProxyMapping)(nil),              // 9: maps.ProxyMapping
+	(*ProxyConnectionRequest)(nil),    // 10: maps.ProxyConnectionRequest
+	(*SeederRegistrationRequest)(nil), // 11: maps.SeederRegistrationRequest
+	(*SeederResponse)(nil),            // 12: maps.SeederResponse
+	(*SeederQueryRequest)(nil),        // 13: maps.SeederQueryRequest
+	(*MultipleSeeders)(nil),           // 14: maps.MultipleSeeders
 }
 var file_maps_maps_proto_depIdxs = []int32{
 	0,  // 0: maps.Error.code:type_name -> maps.ErrorCode
@@ -892,19 +1200,26 @@ var file_maps_maps_proto_depIdxs = []int32{
 	1,  // 5: maps.AgentResponse.error:type_name -> maps.Error
 	4,  // 6: maps.MultipleGateways.gateways:type_name -> maps.GatewayResponse
 	1,  // 7: maps.MultipleGateways.error:type_name -> maps.Error
-	2,  // 8: maps.Maps.RegisterGateway:input_type -> maps.GatewayPutRequest
-	5,  // 9: maps.Maps.RegisterAgent:input_type -> maps.AgentConnectionRequest
-	7,  // 10: maps.Maps.ResolveGatewayForAgent:input_type -> maps.GatewayHandshake
-	9,  // 11: maps.Maps.ResolveGatewayForProxy:input_type -> maps.ProxyMapping
-	4,  // 12: maps.Maps.RegisterGateway:output_type -> maps.GatewayResponse
-	6,  // 13: maps.Maps.RegisterAgent:output_type -> maps.AgentResponse
-	8,  // 14: maps.Maps.ResolveGatewayForAgent:output_type -> maps.MultipleGateways
-	6,  // 15: maps.Maps.ResolveGatewayForProxy:output_type -> maps.AgentResponse
-	12, // [12:16] is the sub-list for method output_type
-	8,  // [8:12] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	1,  // 8: maps.SeederResponse.error:type_name -> maps.Error
+	12, // 9: maps.MultipleSeeders.seeders:type_name -> maps.SeederResponse
+	1,  // 10: maps.MultipleSeeders.error:type_name -> maps.Error
+	2,  // 11: maps.Maps.RegisterGateway:input_type -> maps.GatewayPutRequest
+	5,  // 12: maps.Maps.RegisterAgent:input_type -> maps.AgentConnectionRequest
+	7,  // 13: maps.Maps.ResolveGatewayForAgent:input_type -> maps.GatewayHandshake
+	9,  // 14: maps.Maps.ResolveGatewayForProxy:input_type -> maps.ProxyMapping
+	11, // 15: maps.Maps.RegisterSeeder:input_type -> maps.SeederRegistrationRequest
+	13, // 16: maps.Maps.GetSeeders:input_type -> maps.SeederQueryRequest
+	4,  // 17: maps.Maps.RegisterGateway:output_type -> maps.GatewayResponse
+	6,  // 18: maps.Maps.RegisterAgent:output_type -> maps.AgentResponse
+	8,  // 19: maps.Maps.ResolveGatewayForAgent:output_type -> maps.MultipleGateways
+	6,  // 20: maps.Maps.ResolveGatewayForProxy:output_type -> maps.AgentResponse
+	12, // 21: maps.Maps.RegisterSeeder:output_type -> maps.SeederResponse
+	14, // 22: maps.Maps.GetSeeders:output_type -> maps.MultipleSeeders
+	17, // [17:23] is the sub-list for method output_type
+	11, // [11:17] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_maps_maps_proto_init() }
@@ -918,7 +1233,7 @@ func file_maps_maps_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_maps_maps_proto_rawDesc), len(file_maps_maps_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   10,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

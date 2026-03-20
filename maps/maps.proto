@@ -11,6 +11,8 @@ service Maps {
     rpc RegisterAgent (AgentConnectionRequest) returns (AgentResponse);
     rpc ResolveGatewayForAgent (GatewayHandshake) returns (MultipleGateways);
     rpc ResolveGatewayForProxy (ProxyMapping) returns (AgentResponse);
+    rpc RegisterSeeder (SeederRegistrationRequest) returns (SeederResponse);
+    rpc GetSeeders (SeederQueryRequest) returns (MultipleSeeders);
 }
 
 
@@ -95,4 +97,33 @@ message ProxyMapping {
 message ProxyConnectionRequest {
     string region = 1;
     string verifiable_cred_hash = 3;
+}
+
+message SeederRegistrationRequest {
+    string name = 1;
+    string dns = 2;
+    string seed_ip = 3;
+    string seed_port = 4;
+    string region = 5;
+    string verifiable_cred_hash = 6;
+}
+
+message SeederResponse {
+    string seeder_id = 1;
+    string name = 2;
+    string dns = 3;
+    string seed_ip = 4;
+    string seed_port = 5;
+    string region = 6;
+    string identity = 7;
+    Error error = 8;
+}
+
+message SeederQueryRequest {
+    string region = 1;
+}
+
+message MultipleSeeders {
+    repeated SeederResponse seeders = 1;
+    Error error = 2;
 }

@@ -23,6 +23,8 @@ const (
 	Maps_RegisterAgent_FullMethodName          = "/maps.Maps/RegisterAgent"
 	Maps_ResolveGatewayForAgent_FullMethodName = "/maps.Maps/ResolveGatewayForAgent"
 	Maps_ResolveGatewayForProxy_FullMethodName = "/maps.Maps/ResolveGatewayForProxy"
+	Maps_RegisterSeeder_FullMethodName         = "/maps.Maps/RegisterSeeder"
+	Maps_GetSeeders_FullMethodName             = "/maps.Maps/GetSeeders"
 )
 
 // MapsClient is the client API for Maps service.
@@ -33,6 +35,8 @@ type MapsClient interface {
 	RegisterAgent(ctx context.Context, in *AgentConnectionRequest, opts ...grpc.CallOption) (*AgentResponse, error)
 	ResolveGatewayForAgent(ctx context.Context, in *GatewayHandshake, opts ...grpc.CallOption) (*MultipleGateways, error)
 	ResolveGatewayForProxy(ctx context.Context, in *ProxyMapping, opts ...grpc.CallOption) (*AgentResponse, error)
+	RegisterSeeder(ctx context.Context, in *SeederRegistrationRequest, opts ...grpc.CallOption) (*SeederResponse, error)
+	GetSeeders(ctx context.Context, in *SeederQueryRequest, opts ...grpc.CallOption) (*MultipleSeeders, error)
 }
 
 type mapsClient struct {
@@ -83,6 +87,26 @@ func (c *mapsClient) ResolveGatewayForProxy(ctx context.Context, in *ProxyMappin
 	return out, nil
 }
 
+func (c *mapsClient) RegisterSeeder(ctx context.Context, in *SeederRegistrationRequest, opts ...grpc.CallOption) (*SeederResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SeederResponse)
+	err := c.cc.Invoke(ctx, Maps_RegisterSeeder_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mapsClient) GetSeeders(ctx context.Context, in *SeederQueryRequest, opts ...grpc.CallOption) (*MultipleSeeders, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MultipleSeeders)
+	err := c.cc.Invoke(ctx, Maps_GetSeeders_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MapsServer is the server API for Maps service.
 // All implementations must embed UnimplementedMapsServer
 // for forward compatibility.
@@ -91,6 +115,8 @@ type MapsServer interface {
 	RegisterAgent(context.Context, *AgentConnectionRequest) (*AgentResponse, error)
 	ResolveGatewayForAgent(context.Context, *GatewayHandshake) (*MultipleGateways, error)
 	ResolveGatewayForProxy(context.Context, *ProxyMapping) (*AgentResponse, error)
+	RegisterSeeder(context.Context, *SeederRegistrationRequest) (*SeederResponse, error)
+	GetSeeders(context.Context, *SeederQueryRequest) (*MultipleSeeders, error)
 	mustEmbedUnimplementedMapsServer()
 }
 
@@ -112,6 +138,12 @@ func (UnimplementedMapsServer) ResolveGatewayForAgent(context.Context, *GatewayH
 }
 func (UnimplementedMapsServer) ResolveGatewayForProxy(context.Context, *ProxyMapping) (*AgentResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ResolveGatewayForProxy not implemented")
+}
+func (UnimplementedMapsServer) RegisterSeeder(context.Context, *SeederRegistrationRequest) (*SeederResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RegisterSeeder not implemented")
+}
+func (UnimplementedMapsServer) GetSeeders(context.Context, *SeederQueryRequest) (*MultipleSeeders, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetSeeders not implemented")
 }
 func (UnimplementedMapsServer) mustEmbedUnimplementedMapsServer() {}
 func (UnimplementedMapsServer) testEmbeddedByValue()              {}
@@ -206,6 +238,42 @@ func _Maps_ResolveGatewayForProxy_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Maps_RegisterSeeder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SeederRegistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MapsServer).RegisterSeeder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Maps_RegisterSeeder_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MapsServer).RegisterSeeder(ctx, req.(*SeederRegistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Maps_GetSeeders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SeederQueryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MapsServer).GetSeeders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Maps_GetSeeders_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MapsServer).GetSeeders(ctx, req.(*SeederQueryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Maps_ServiceDesc is the grpc.ServiceDesc for Maps service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +296,14 @@ var Maps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResolveGatewayForProxy",
 			Handler:    _Maps_ResolveGatewayForProxy_Handler,
+		},
+		{
+			MethodName: "RegisterSeeder",
+			Handler:    _Maps_RegisterSeeder_Handler,
+		},
+		{
+			MethodName: "GetSeeders",
+			Handler:    _Maps_GetSeeders_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
